@@ -57,6 +57,16 @@
   (is (nil? (project/tempo-point {:tick 0 :bpm 0 :time-sig [4 4]})))
   (is (some? (project/track {:id "t" :type :midi :name "x"}))))
 
+(deftest bus-gain-defaults-and-validates
+  ;; :bus/gain defaults to 1.0 (unity, backward compatible with every
+  ;; existing (project/bus ...) call site that doesn't pass :gain) and is
+  ;; validated as a non-negative number -- see README, 'Real bus-graph
+  ;; mixing proof', for the render-time semantics this field drives.
+  (is (= 1.0 (:bus/gain (project/bus {:id "b" :name "x"}))))
+  (is (= 0.5 (:bus/gain (project/bus {:id "b" :name "x" :gain 0.5}))))
+  (is (nil? (project/bus {:id "b" :name "x" :gain -1})))
+  (is (nil? (project/bus {:id "b" :name "x" :gain "loud"}))))
+
 (deftest valid-project-round-trips-clean
   (let [proj (base-project)]
     (is (some? proj))

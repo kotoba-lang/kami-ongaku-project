@@ -48,12 +48,17 @@
       output-bus  (assoc :track/output-bus output-bus))))
 
 (defn bus
-  [{:keys [id name inputs plugin-chain] :or {inputs #{} plugin-chain []}}]
+  "`gain` is the bus's own linear gain multiplier (default 1.0), applied to
+  the SUM of this bus's :inputs (tracks and/or other buses) at render time —
+  see kami-ongaku-project's README, 'Real bus-graph mixing proof'. This
+  constructor only validates the shape; it does not itself mix anything."
+  [{:keys [id name inputs plugin-chain gain] :or {inputs #{} plugin-chain [] gain 1.0}}]
   (when (and (string? id) (seq id)
              (string? name) (seq name)
              (set? inputs) (every? string? inputs)
-             (vector? plugin-chain) (every? some? plugin-chain))
-    {:bus/id id :bus/name name :bus/inputs inputs :bus/plugin-chain plugin-chain}))
+             (vector? plugin-chain) (every? some? plugin-chain)
+             (number? gain) (>= gain 0.0))
+    {:bus/id id :bus/name name :bus/inputs inputs :bus/plugin-chain plugin-chain :bus/gain gain}))
 
 (def clip-content-shape-ok?
   "Cheap structural (not deep-validity) shape check per track type, used by
