@@ -2,14 +2,28 @@
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         io.github.kotoba-lang/kami-ongaku-notation
         {:git/url "https://github.com/kotoba-lang/kami-ongaku-notation"
-         :git/sha "604b857e9d4ee97be6178a02f2573c69154de7af"}
+         :git/sha "0a61b700a331876c9693a022ad469c671b42f44e"}
         io.github.kotoba-lang/kami-ongaku-sequencer
         {:git/url "https://github.com/kotoba-lang/kami-ongaku-sequencer"
-         :git/sha "e88819952beba747499bd776c3dd1435004b2182"}}
+         :git/sha "17c0ec4607b121e71cc7f16fc66abb40e442f8b8"}}
  :aliases
  {:test {:extra-paths ["test"]
          :main-opts ["-e"
                      "(require 'kami.ongaku.project-test) (let [r (clojure.test/run-tests 'kami.ongaku.project-test)] (System/exit (if (zero? (+ (:fail r) (:error r))) 0 1)))"]}
   :lint {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2024.11.14"}}
          :main-opts ["-m" "clj-kondo.main" "--lint" "src" "test"
-                     "--fail-level" "error"]}}}
+                     "--fail-level" "error"]}
+  ;; Real-browser AudioWorklet multi-track bus-graph mixing E2E
+  ;; (scripts/build-e2e-bundles.sh + test/e2e/run_e2e.cljs). Only this alias
+  ;; needs the ClojureScript compiler and test-only (pinned-SHA) git
+  ;; dependencies on kotoba-lang/audio (real oscillator/ADSR DSP -- this repo
+  ;; has none of its own) and kotoba-lang/org-w3-webaudio (the
+  ;; AudioContext/AudioWorkletNode binding layer + its proven
+  ;; :optimizations :advanced + self-polyfill worklet recipe, reused rather
+  ;; than reinvented). Bump the SHAs when those repos advance.
+  :e2e {:extra-paths ["test/e2e/src"]
+        :extra-deps {org.clojure/clojurescript {:mvn/version "1.11.132"}
+                     io.github.kotoba-lang/audio
+                     {:git/sha "03966413bfd9065acd2f265c00b886ab6149acf6"}
+                     io.github.kotoba-lang/org-w3-webaudio
+                     {:git/sha "e554d853d6403c35b1ffe1c4adb37d2a1d557451"}}}}}
