@@ -2,10 +2,10 @@
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         io.github.kotoba-lang/kami-ongaku-notation
         {:git/url "https://github.com/kotoba-lang/kami-ongaku-notation"
-         :git/sha "0a61b700a331876c9693a022ad469c671b42f44e"}
+         :git/sha "76ac886986f208211f9f595e54b07ed7cebade9b"}
         io.github.kotoba-lang/kami-ongaku-sequencer
         {:git/url "https://github.com/kotoba-lang/kami-ongaku-sequencer"
-         :git/sha "17c0ec4607b121e71cc7f16fc66abb40e442f8b8"}}
+         :git/sha "6864b91fc0927bf5884b2649be426afee19e963a"}}
  :aliases
  {:test {:extra-paths ["test"]
          :main-opts ["-e"
