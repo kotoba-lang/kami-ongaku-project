@@ -14,7 +14,7 @@
   Portable .cljc across JVM / ClojureScript. Ticks are plain integers at
   :project/ppq resolution, matching kami.ongaku.sequencer's convention —
   no float/ratio time arithmetic here."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (def default-ppq
   "Ticks per quarter note. Matches kami.ongaku.sequencer/default-ppq."
