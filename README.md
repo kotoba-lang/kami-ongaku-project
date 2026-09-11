@@ -89,7 +89,7 @@ shape and return `nil` on invalid input, same convention as
 ## Real bus-graph mixing proof (`test/e2e/`)
 
 **This is a test/proof harness, not a claim that `src/` renders audio.**
-`test/kami/ongaku/project_test.cljc` already unit-tests the track/bus/
+`test/kami/ongaku/project_test.cljk` already unit-tests the track/bus/
 clip-placement/automation/tempo-map constructors and `validate-project`
 (referential integrity, bus-graph cycle detection, clip-content-vs-track-type
 matching) exhaustively, using real `kami-ongaku-notation` and
@@ -120,7 +120,7 @@ has none of its own.
 
 ### The session
 
-`test/e2e/src/kami/ongaku/project/e2e/fixture.cljc` (shared, portable,
+`test/e2e/src/kami/ongaku/project/e2e/fixture.cljk` (shared, portable,
 required unmodified by the worklet bundle, the main-driver bundle, AND the
 offline nbb reference) builds this project using ONLY this repo's own
 `track`/`bus`/`clip-placement`/`tempo-point`/`project` constructors:
@@ -148,7 +148,7 @@ plays IS the one `validate-project` accepts, not a hand-waved shape).
 
 ### The proof
 
-`test/e2e/src/kami/ongaku/project/e2e/worklet_dsp.cljs` (compiled into the
+`test/e2e/src/kami/ongaku/project/e2e/worklet_dsp.cljk` (compiled into the
 worklet bundle) builds the project, synthesizes both tracks' real audio
 content independently via `audio.synth` (each domain's own pitch/duration/
 dynamics-or-velocity → freq/samples/gain conversion, same formulas the
@@ -156,7 +156,7 @@ notation/sequencer E2Es use), then **mixes them through the project's own
 bus graph** — `fixture/mix-master`, a pure function that recursively sums
 each bus's `:inputs` (tracks and/or other buses) and scales by that bus's
 own `:gain` — all inside a real `AudioWorkletProcessor`, producing ONE
-continuous master-bus output buffer. `test/e2e/run_e2e.cljs` (nbb) then:
+continuous master-bus output buffer. `test/e2e/run_e2e.cljk` (nbb) then:
 
 1. checks `validate-project` is empty for both `:gain` values (no browser);
 2. synthesizes both tracks' content **once** (gain-independent) and mixes
@@ -228,7 +228,7 @@ AUDIO_SRC_PATH=/path/to/kotoba-lang/audio/src
 WEBAUDIO_SRC_PATH=/path/to/kotoba-lang/org-w3-webaudio/src
 NOTATION_SRC_PATH=/path/to/kotoba-lang/kami-ongaku-notation/src
 SEQUENCER_SRC_PATH=/path/to/kotoba-lang/kami-ongaku-sequencer/src
-nbb -cp "src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH:$NOTATION_SRC_PATH:$SEQUENCER_SRC_PATH" test/e2e/run_e2e.cljs
+nbb -cp "src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH:$NOTATION_SRC_PATH:$SEQUENCER_SRC_PATH" test/e2e/run_e2e.cljk
 ```
 
 Exits 0 and prints the full report (validate-project check, offline

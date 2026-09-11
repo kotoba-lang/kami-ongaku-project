@@ -14,7 +14,7 @@
 
    `drums-gain` is passed to the worklet via AudioWorkletNode's own
    `processorOptions` (a real structured-clone-carried plain number, not a
-   MessagePort round-trip) -- this is what test/e2e/run_e2e.cljs varies
+   MessagePort round-trip) -- this is what test/e2e/run_e2e.cljk varies
    across its two renders (0.5 and 1.0) to prove bus-graph gain routing.
 
    Compiled the same way as worklet_dsp.cljs (:optimizations advanced +

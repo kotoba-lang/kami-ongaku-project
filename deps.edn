@@ -19,7 +19,7 @@
          :main-opts ["-m" "clj-kondo.main" "--lint" "src" "test"
                      "--fail-level" "error"]}
   ;; Real-browser AudioWorklet multi-track bus-graph mixing E2E
-  ;; (scripts/build-e2e-bundles.sh + test/e2e/run_e2e.cljs). Only this alias
+  ;; (scripts/build-e2e-bundles.sh + test/e2e/run_e2e.cljk). Only this alias
   ;; needs the ClojureScript compiler and test-only (pinned-SHA) git
   ;; dependencies on kotoba-lang/audio (real oscillator/ADSR DSP -- this repo
   ;; has none of its own) and kotoba-lang/org-w3-webaudio (the
