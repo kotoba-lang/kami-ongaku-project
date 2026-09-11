@@ -70,7 +70,7 @@
    plus checkouts of kotoba-lang/audio and kotoba-lang/org-w3-webaudio on the
    nbb classpath:
 
-     nbb -cp \"src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH\" test/e2e/run_e2e.cljk"
+     kbb --backend sci -cp \"src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH\" test/e2e/run_e2e.cljk"
   (:require ["playwright" :refer [chromium]]
             ["http" :as http]
             ["fs" :as fs]

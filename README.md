@@ -228,7 +228,7 @@ AUDIO_SRC_PATH=/path/to/kotoba-lang/audio/src
 WEBAUDIO_SRC_PATH=/path/to/kotoba-lang/org-w3-webaudio/src
 NOTATION_SRC_PATH=/path/to/kotoba-lang/kami-ongaku-notation/src
 SEQUENCER_SRC_PATH=/path/to/kotoba-lang/kami-ongaku-sequencer/src
-nbb -cp "src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH:$NOTATION_SRC_PATH:$SEQUENCER_SRC_PATH" test/e2e/run_e2e.cljk
+kbb --backend sci -cp "src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH:$NOTATION_SRC_PATH:$SEQUENCER_SRC_PATH" test/e2e/run_e2e.cljk
 ```
 
 Exits 0 and prints the full report (validate-project check, offline
@@ -245,6 +245,6 @@ artifacts, gitignored.
 ## Test
 
 ```bash
-clojure -M:test
-clojure -M:lint
+kbb -M:test
+kbb -M:lint
 ```
