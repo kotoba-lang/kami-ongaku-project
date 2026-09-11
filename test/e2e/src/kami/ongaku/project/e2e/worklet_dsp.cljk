@@ -6,7 +6,7 @@
    directly on top of the shared kami.ongaku.project.e2e.fixture (this
    repo's OWN kami.ongaku.project / kami.ongaku.notation /
    kami.ongaku.sequencer real session/track/clip data, also required
-   unmodified by test/e2e/run_e2e.cljs's offline nbb cross-check).
+   unmodified by test/e2e/run_e2e.cljk's offline nbb cross-check).
 
    Built the same way as org-w3-webaudio's / kami-ongaku-sampler's /
    kami-ongaku-plugin-host's / kami-ongaku-sequencer's / kami-ongaku-

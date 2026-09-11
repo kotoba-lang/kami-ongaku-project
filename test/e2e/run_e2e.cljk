@@ -10,7 +10,7 @@
 
    kami-ongaku-project has no audio rendering of its own (out of scope per
    its own README v0, 'No audio rendering, no mixing/gain math') --
-   test/e2e/src/kami/ongaku/project/e2e/fixture.cljc bridges its real
+   test/e2e/src/kami/ongaku/project/e2e/fixture.cljk bridges its real
    track/bus/clip-placement session data (a 2-track, 3-bus project: a
    kami-ongaku-notation phrase on track \"t-notation\" -> bus \"b-inst\"
    (gain 1.0); a kami-ongaku-sequencer pattern on track \"t-midi\" -> bus
@@ -70,7 +70,7 @@
    plus checkouts of kotoba-lang/audio and kotoba-lang/org-w3-webaudio on the
    nbb classpath:
 
-     nbb -cp \"src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH\" test/e2e/run_e2e.cljs"
+     nbb -cp \"src:test/e2e/src:$AUDIO_SRC_PATH:$WEBAUDIO_SRC_PATH\" test/e2e/run_e2e.cljk"
   (:require ["playwright" :refer [chromium]]
             ["http" :as http]
             ["fs" :as fs]

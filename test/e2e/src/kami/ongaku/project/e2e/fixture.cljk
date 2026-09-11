@@ -2,7 +2,7 @@
   "Shared, portable (.cljc -- JVM + cljs, required UNMODIFIED by both the
    real-browser worklet bundle and the offline nbb cross-check) fixture for
    kami-ongaku-project's real-browser AudioWorklet multi-track bus-graph
-   MIXING proof (see test/e2e/run_e2e.cljs and README, 'Real bus-graph
+   MIXING proof (see test/e2e/run_e2e.cljk and README, 'Real bus-graph
    mixing proof').
 
    kami-ongaku-project is the L3 SESSION model tying kami-ongaku-notation
